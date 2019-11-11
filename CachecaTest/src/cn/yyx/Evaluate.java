@@ -18,7 +18,7 @@ public class Evaluate {
 	
 	public Evaluate() {
 		try {
-			INSTANCE.init(new File("train.3grams").toURI().toURL(), 3);
+			INSTANCE.init(new File("train.lm").toURI().toURL(), 3);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
