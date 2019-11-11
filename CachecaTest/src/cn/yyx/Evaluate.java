@@ -53,6 +53,7 @@ public class Evaluate {
 		for (int i=0;i<top_ks.length;i++) {
 			result.add(0.0);
 		}
+		one_example = "<s>" + " " + one_example;
 		String[] oes = one_example.split(" ");
 		for (int i=1;i<oes.length;i++) {
 			String expected_token = oes[i];
@@ -63,7 +64,7 @@ public class Evaluate {
 				result.set(j, result.get(j) + as.get(j)*1.0);
 			}
 		}
-		return new Accuracy(result, oes.length*1.0);
+		return new Accuracy(result, oes.length*1.0-1.0);
 	}
 	
 	public ArrayList<Double> EvaluateAccuracy(File test_file) {

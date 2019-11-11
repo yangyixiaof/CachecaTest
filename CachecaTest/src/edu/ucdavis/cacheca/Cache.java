@@ -54,6 +54,7 @@ public class Cache {
 //		catch (IOException e) { e.printStackTrace(); }
 
 		ArrayList<String> tokens = YTokenizer.GetTokens(line);
+		tokens.add(0, "<s>");
 		String cachePrefix;
 		for (int i = mMinOrder - 1; i < tokens.size(); i++) {
 			int start = i - (mOrder - 1) > 0 ? i - (mOrder - 1) : 0;
