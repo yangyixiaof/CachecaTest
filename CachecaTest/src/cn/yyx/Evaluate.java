@@ -104,4 +104,14 @@ public class Evaluate {
 		
 	}
 	
+	public static void main(String[] args) {
+		Evaluate e = new Evaluate();
+		ArrayList<Double> accuracy = e.EvaluateAccuracy(new File("oracle_sequence_test_data.txt"));
+		StringBuffer sb = new StringBuffer();
+		for (double acc : accuracy) {
+			sb.append(acc + " ");
+		}
+		System.out.println("accuracy:" + sb.toString());
+	}
+	
 }
