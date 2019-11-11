@@ -3,6 +3,8 @@ package edu.ucdavis.cacheca;
 import java.net.URL;
 import java.util.ArrayList;
 
+import cn.yyx.YTokenizer;
+
 public class CachecaComputer {
 	
 //	private static final CachecaComputer INSTANCE = new CachecaComputer();
@@ -52,19 +54,26 @@ public class CachecaComputer {
 
     public ArrayList<Word> getCandidates(String p)
     {
-    	String[] pref = p.split("((?<=\\.)|(?=\\.))| |((?<=\\{)|(?=\\{))|((?<=\\()|(?=\\())|((?<=\\))|(?=\\)))|((?<=\\[)|(?=\\[))|((?<=\\;)|(?=\\;))");
+//    	String[] pref = p.split("((?<=\\.)|(?=\\.))| |((?<=\\{)|(?=\\{))|((?<=\\()|(?=\\())|((?<=\\))|(?=\\)))|((?<=\\[)|(?=\\[))|((?<=\\;)|(?=\\;))");
+//		String prefix = "";
+//		boolean start = true;
+//		for (String pre : pref){
+//			pre.trim();
+//			if(pre == null || pre.equals("") || pre.equals(" "))
+//				continue;
+//			if(start == false)
+//				prefix+= " ";
+//			prefix+=pre;
+//			start = false;
+//		}
+		
+		ArrayList<String> tks = YTokenizer.GetTokens(p);
 		String prefix = "";
-		boolean start = true;
-		for (String pre : pref){
-			pre.trim();
-			if(pre == null || pre.equals("") || pre.equals(" "))
-				continue;
-			if(start == false)
-				prefix+= " ";
-			prefix+=pre;
-			start = false;
+		for (String pre : tks){
+			prefix += (pre + " ");
 		}
-    	
+		prefix = prefix.trim();
+		
     	ArrayList<Word> candidates;
     	
         String ngramPrefix, cachePrefix;
